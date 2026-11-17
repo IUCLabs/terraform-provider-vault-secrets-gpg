@@ -1,4 +1,4 @@
-/terraform-provider-gpgvaultsecret
+/terraform-provider-vault-secrets-gpg
 *.zip
 *.out
 *.test

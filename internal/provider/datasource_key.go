@@ -54,7 +54,7 @@ func (d *keyDataSource) Schema(_ context.Context, _ datasource.SchemaRequest, re
 			"identity":               schema.StringAttribute{Description: "OpenPGP User ID.", Computed: true},
 			"exportable":             schema.BoolAttribute{Description: "Whether the private key is exportable.", Computed: true},
 			"deletion_allowed":       schema.BoolAttribute{Description: "Whether the key may be deleted.", Computed: true},
-			"min_decryption_version": schema.Int64Attribute{Description: "Minimum usable version for decryption/verification.", Computed: true},
+			"min_decryption_version": schema.Int64Attribute{Description: "Minimum key version usable for decryption.", Computed: true},
 			"latest_version":         schema.Int64Attribute{Description: "Current (highest) key version.", Computed: true},
 			"fingerprint":            schema.StringAttribute{Description: "OpenPGP fingerprint of the latest version.", Computed: true},
 			"key_id":                 schema.StringAttribute{Description: "OpenPGP key ID of the latest version.", Computed: true},

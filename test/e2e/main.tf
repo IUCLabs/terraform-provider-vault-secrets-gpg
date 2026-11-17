@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     gpg = {
-      source = "git.unkin.net/unkin/gpgvaultsecret"
+      source = "IUCLabs/vault-secrets-gpg"
     }
   }
 }
@@ -27,7 +27,7 @@ resource "gpg_key" "app" {
   backend    = gpg_secret_backend.gpg.path
   name       = "app"
   algorithm  = "rsa-2048"
-  identity   = "App <app@unkin.net>"
+  identity   = "App <app@example.com>"
   exportable = false
 }
 

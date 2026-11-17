@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# End-to-end test for terraform-provider-gpgvaultsecret. Boots a Vault dev server
+# End-to-end test for terraform-provider-vault-secrets-gpg. Boots a Vault dev server
 # running the vault-plugin-secrets-gpg engine, then applies real terraform that
 # registers + mounts the backend, creates a key, and reads it via the data
 # source. Verifies the outputs and that the mounted engine actually works, then
@@ -37,7 +37,7 @@ trap cleanup EXIT
 
 blue "Building provider"
 make -C "${ROOT_DIR}" build >/dev/null
-PROVIDER_BIN="${ROOT_DIR}/terraform-provider-gpgvaultsecret"
+PROVIDER_BIN="${ROOT_DIR}/terraform-provider-vault-secrets-gpg"
 
 blue "Starting Vault dev server (plugin_directory=${PLUGIN_DIR})"
 vault server -dev -dev-root-token-id=root -dev-listen-address=127.0.0.1:8282 \
@@ -54,7 +54,7 @@ green "vault ready"
 cat > "${WORK}/dev.tfrc" <<EOF
 provider_installation {
   dev_overrides {
-    "git.unkin.net/unkin/gpgvaultsecret" = "$(dirname "${PROVIDER_BIN}")"
+    "registry.terraform.io/iuclabs/vault-secrets-gpg" = "$(dirname "${PROVIDER_BIN}")"
   }
   direct {}
 }

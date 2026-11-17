@@ -46,14 +46,14 @@ func (r *secretBackendResource) Schema(_ context.Context, _ resource.SchemaReque
 		Description: "Mounts the gpg secrets engine. Optionally registers the plugin in the catalog first when a sha256 is given.",
 		Attributes: map[string]schema.Attribute{
 			"path": schema.StringAttribute{
-				Description: "Mount path for the gpg secrets engine (e.g. \"gpg\").",
+				Description: "Mount path for the gpg secrets engine (e.g. \"gpg\"). Changing this forces a new mount.",
 				Required:    true,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.RequiresReplace(),
 				},
 			},
 			"plugin": schema.StringAttribute{
-				Description: "Registered plugin name/type to mount.",
+				Description: "Registered plugin name (mount type). Defaults to vault-plugin-secrets-gpg. Changing this forces a new mount.",
 				Optional:    true,
 				Computed:    true,
 				Default:     stringdefault.StaticString(defaultPluginType),

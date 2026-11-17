@@ -7,8 +7,10 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 
-	"git.unkin.net/unkin/terraform-provider-gpgvaultsecret/internal/provider"
+	"github.com/IUCLabs/terraform-provider-vault-secrets-gpg/internal/provider"
 )
+
+//go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@v0.24.0 generate --provider-name gpg
 
 var version = "0.0.1"
 
@@ -18,7 +20,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "git.unkin.net/unkin/gpgvaultsecret",
+		Address: "registry.terraform.io/iuclabs/vault-secrets-gpg",
 		Debug:   debug,
 	}
 

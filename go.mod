@@ -1,4 +1,4 @@
-module git.unkin.net/unkin/terraform-provider-gpgvaultsecret
+module github.com/IUCLabs/terraform-provider-vault-secrets-gpg
 
 go 1.25
 
